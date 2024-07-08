@@ -19,18 +19,92 @@
 > 사용 ViT 모델
 >> [dima806/facial_emotions_image_detection](https://huggingface.co/dima806/facial_emotions_image_detection)
 - 입력 이미지 크기: 224x224
-- ViTEmbeddings:
- 1. 입력 이미지를 16x16 패치로 나누고 각 패치를 768차원의 임베딩으로 변환
- 2. 위치 정보를 포함한 임베딩이 생성
- 3. Dropout 레이어를 거쳐 최종 임베딩이 출력
-- ViTEncoder:
- - 12개의 ViTLayer로 구성
- - 각 ViTLayer에서는 [Self-Attention 메커니즘](https://zayunsna.github.io/blog/2023-09-05-self_attention/)과 [Feed-Forward Neural Network](https://blog.naver.com/apr407/221238611771)가 적용
- - Self-Attention 메커니즘은 Query, Key, Value 행렬을 사용하여 임베딩 간의 관계를 학습
- - Feed-Forward Neural Network는 각 임베딩을 독립적으로 처리하여 특징을 추출
-- 출력 레이어:
- - 인코더의 마지막 출력 임베딩(768차원)을 사용
- - 768차원의 출력을 가지는 Linear 레이어와 Tanh 활성화 함수로 구성(출력 레이어의 크기는 감정 클래스 수에 따라 달라질 수 있음)
+```
+ViTConfig {
+  "_name_or_path": "dima806/facial_emotions_image_detection",
+  "architectures": [
+    "ViTForImageClassification"
+  ],
+  "attention_probs_dropout_prob": 0.0,
+  "encoder_stride": 16,
+  "hidden_act": "gelu", # gelu: https://arxiv.org/pdf/1606.08415
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "sad",
+    "1": "disgust",
+    "2": "angry",
+    "3": "neutral",
+    "4": "fear",
+    "5": "surprise",
+    "6": "happy"
+  },
+  "image_size": 224,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072, # Encoder의 intermediate(=feed-forward) 차원 수
+  "label2id": {
+    "angry": 2,
+    "disgust": 1,
+    "fear": 4,
+    "happy": 6,
+    "neutral": 3,
+    "sad": 0,
+    "surprise": 5
+  },
+  "layer_norm_eps": 1e-12,
+  "model_type": "vit",
+  "num_attention_heads": 12,
+  "num_channels": 3,
+  "num_hidden_layers": 12,
+  "patch_size": 16,
+  "problem_type": "single_label_classification",
+  "qkv_bias": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.41.2"
+}
+```
+```
+ViTForImageClassification(
+  (vit): ViTModel(
+    (embeddings): ViTEmbeddings(
+      (patch_embeddings): ViTPatchEmbeddings(
+        (projection): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16))
+      )
+      (dropout): Dropout(p=0.0, inplace=False)
+    )
+    (encoder): ViTEncoder(
+      (layer): ModuleList(
+        (0-11): 12 x ViTLayer(
+          (attention): ViTSdpaAttention(
+            (attention): ViTSdpaSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.0, inplace=False)
+            )
+            (output): ViTSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (intermediate): ViTIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+            (intermediate_act_fn): GELUActivation()
+          )
+          (output): ViTOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layernorm_before): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+          (layernorm_after): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+    )
+    (layernorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+  )
+  (classifier): Linear(in_features=768, out_features=7, bias=True)
+)
+```
 
 > 수정해야할 점
 >> (240707)
