@@ -16,9 +16,10 @@
 - 실시간 감지 루프와 비디오 스트림 처리, 웹캠을 사용하여 사용자의 입이 열렸는지 감지 등 주요 기능 참고
 
 
-> 사용 ViT 모델
+> ViT 모델 정보
 >> [dima806/facial_emotions_image_detection](https://huggingface.co/dima806/facial_emotions_image_detection)
 - 입력 이미지 크기: 224x224
+- [self-attention](https://velog.io/@jhbale11/%EC%96%B4%ED%85%90%EC%85%98-%EB%A7%A4%EC%BB%A4%EB%8B%88%EC%A6%98Attention-Mechanism%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
 ```
 ViTConfig {
   "_name_or_path": "dima806/facial_emotions_image_detection",
