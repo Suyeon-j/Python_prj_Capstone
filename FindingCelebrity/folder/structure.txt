@@ -1,0 +1,16 @@
+./PJ
+ 	 m_img/
+ 	     a.jpg
+ 	     b.jpg
+      ...
+ 	 w_img/
+ 	     x.jpg
+ 	     y.jpg
+      ...
+ 	 facenet/
+       m_emb_mtcnn.csv
+       w_emb_mtcnn.csv
+   ...
+   m_similarity_facial.py
+   w_similarity_facial.py
+   ...
