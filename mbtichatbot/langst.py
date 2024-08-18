@@ -79,3 +79,6 @@ def chatbot():
 
         with st.chat_message("ai"):
             st.markdown(answer)
+
+if __name__ == "__main__":
+    chatbot()
