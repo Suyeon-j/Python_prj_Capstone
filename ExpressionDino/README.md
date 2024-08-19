@@ -18,8 +18,6 @@
 
 > ViT 모델 정보
 >> [dima806/facial_emotions_image_detection](https://huggingface.co/dima806/facial_emotions_image_detection)
-- 입력 이미지 크기: 224x224
-- [self-attention](https://velog.io/@jhbale11/%EC%96%B4%ED%85%90%EC%85%98-%EB%A7%A4%EC%BB%A4%EB%8B%88%EC%A6%98Attention-Mechanism%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
 
 > 수정 사항
 >> (240707)
@@ -31,6 +29,10 @@
 >> 1. 게임 화면 중앙 상단에 감지한 표정의 텍스트 출력하도록
 >> 2. 슬라이딩 하는 감정에 관한 논의
 
+>> (2408)
+>> 1. BGM 기능 추가(기본 음량 크기 50%)
+>> 2. 키보드로 ESC 버튼을 눌렀을 때 계속하기, 그만두기, 소리 조절 버튼 추가
 
-> 이후 수정 계획
->> 1. 표정뿐만 아니라 음성인식도 추가
+
+>> 이후 수정 계획
+>> 1. 음성인식 기능
