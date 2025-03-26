@@ -1,1 +1,1 @@
-![image](https://github.com/user-attachments/assets/a23a5733-c35b-4590-8be3-ff1e5f685912)
+![그림1](https://github.com/user-attachments/assets/230e4580-18a1-43c5-8d3f-cb16f29cdcbb)
