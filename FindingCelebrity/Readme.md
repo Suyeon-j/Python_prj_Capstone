@@ -13,6 +13,24 @@
 >> 1-2. 각각 두 이미지를 데이터셋과 개별 임베딩으로 유사도 분석 (사용자의 웃는 표정과 무표정이 데이터셋의 연예인과 얼마나 유사한지 보기 위함)
 
 
-수정 예정
+수정
 > 1. 기존 함수 cv2.VideoCapture(0) 교체
 >> 이유: 느림
+
+```bash
+ 	 m_img/
+ 	     a.jpg
+ 	     b.jpg
+      ...
+ 	 w_img/
+ 	     x.jpg
+ 	     y.jpg
+      ...
+ 	 facenet/
+       m_emb_mtcnn.csv
+       w_emb_mtcnn.csv
+   ...
+   m_similarity_facial.py
+   w_similarity_facial.py
+   ...
+```
